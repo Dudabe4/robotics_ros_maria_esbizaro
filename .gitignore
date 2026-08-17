@@ -1,2 +1,5 @@
 bin/
 __pycache__/
+log/
+build/
+install//
