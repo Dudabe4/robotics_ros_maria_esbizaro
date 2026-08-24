@@ -40,7 +40,7 @@ ARG USER_GID=1000
 RUN set -eux; \
     # renomeia grupo 1000 para 'host' (se ainda não tiver esse nome)
     if [ "$(getent group ${USER_GID} | cut -d: -f1)" != "${USERNAME}" ]; then \
-      groupmod -n "${USERNAME}" "$(getent group ${USER_GID} | cut -d: - f1)"; \
+      groupmod -n "${USERNAME}" "$(getent group ${USER_GID} | cut -d: -f1)"; \
     fi; \
     # renomeia user 1000 para 'host' e move a home para /home/host
     if [ "$(getent passwd ${USER_UID} | cut -d: -f1)" != "${USERNAME}" ]; then \
