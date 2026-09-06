@@ -12,7 +12,8 @@ Abaixo estão os links para os READMEs das pastas que contêm os itens desenvolv
 
 ### ROS
 
-### Docker
+- [Projeto 00 - Teste de pacotes](ros_ws/src/projeto_0/README.md)
+- [Projeto 01 - Publisher e Subscriber](ros_ws/src/projeto_1/README.md)
 
 ## Organização do repositório
 
