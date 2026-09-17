@@ -55,7 +55,7 @@ USER ${USERNAME}
 ENV HOME=/home/${USERNAME}
 
 # Define qual é o diretório padrão de trabalho
-WORKDIR /home/${USERNAME}/Desktop/SL_ROS_DOCKER/ROS/ros_ws
+WORKDIR /home/${USERNAME}/ros_ws
 
 # Etapa 5: Comando padrão para abrir o terminal
 CMD ["/bin/bash"]
