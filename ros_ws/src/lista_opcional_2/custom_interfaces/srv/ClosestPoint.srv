@@ -1,6 +1,6 @@
-Point2D reference
-Point2D[] candidates
+custom_interfaces/Point2D reference
+custom_interfaces/Point2D[] candidates
 ---
-Point2D closest
-Point2D distance
-Point2D index
+custom_interfaces/Point2D closest
+float64 distance
+int32 index
