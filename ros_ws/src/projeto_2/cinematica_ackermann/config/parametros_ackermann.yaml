@@ -1,0 +1,6 @@
+/cinematica_ackermann:
+  ros__parameters:
+    wheel_radius: 0.0
+    wheel_base: 0.0
+    max_steering_angle: 0.0
+    wheel_distance: 0.0
