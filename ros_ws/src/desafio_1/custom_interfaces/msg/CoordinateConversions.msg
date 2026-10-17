@@ -1,0 +1,10 @@
+float64 spherical_r
+float64 spherical_theta
+float64 spherical_phi
+
+float64 cylindrical_rho
+float64 cylindrical_phi
+float64 cylindrical_z
+
+float64 azimuth
+float64 elevation
