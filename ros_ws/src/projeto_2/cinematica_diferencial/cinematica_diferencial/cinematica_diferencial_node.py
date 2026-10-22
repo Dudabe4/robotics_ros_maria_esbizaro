@@ -9,6 +9,10 @@ class CinematicaDiferencialNode(Node):
     def __init__(self):
         super().__init__("cinematica_diferencial_node")
 
+        self.get_logger().info(
+            f'O nó de cinemática diferencial foi iniciado!'
+        )
+
         # Declara os parâmetros geométricos e o tempo de validade dos comandos.
         self.declare_parameter('wheel_radius', 0.0)
         self.declare_parameter('wheel_separation', 0.0)

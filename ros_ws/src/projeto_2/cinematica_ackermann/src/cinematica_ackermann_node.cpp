@@ -16,6 +16,11 @@ class CinematicaAckermannNode : public rclcpp::Node
 public:
     CinematicaAckermannNode() : Node("cinematica_ackermann")
     {
+
+        RCLCPP_INFO(
+            this->get_logger(),
+            "Nó de cinemática Ackermann iniciado!"
+        );
     
         // Declara os parâmetros geométricos e o tempo de validade dos comandos.
         this->declare_parameter<double>("wheel_radius", 0.0);
