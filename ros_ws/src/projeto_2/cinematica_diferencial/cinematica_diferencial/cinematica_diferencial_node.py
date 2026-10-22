@@ -9,11 +9,13 @@ class CinematicaDiferencialNode(Node):
     def __init__(self):
         super().__init__("cinematica_diferencial_node")
 
+        # Declara os parâmetros geométricos e o tempo de validade dos comandos.
         self.declare_parameter('wheel_radius', 0.0)
         self.declare_parameter('wheel_separation', 0.0)
         self.declare_parameter('command_timeout', 0.5)
 
 
+        # Recebe os comandos de velocidade do veículo.
         self.subscription = self.create_subscription(
             TwistStamped,
             "/cmd_vel",
@@ -21,6 +23,7 @@ class CinematicaDiferencialNode(Node):
             10
         )
 
+        # Publica as velocidades angulares das rodas.
         self.publisher_ = self.create_publisher(
             JointState,
             "/diferencial/rodas",
@@ -32,6 +35,7 @@ class CinematicaDiferencialNode(Node):
         self.last_output_was_zero = False
 
 
+        # Verifica periodicamente se o último comando expirou.
         self.timer = self.create_timer(
             0.05, 
             self.check_command_timeout
@@ -54,6 +58,8 @@ class CinematicaDiferencialNode(Node):
 
 
     def publish_zero(self):
+
+        # Interrompe as rodas quando não há um comando válido.
         self.publish_wheel_speeds(0.0, 0.0)
 
         self.last_output_was_zero = True
@@ -83,6 +89,7 @@ class CinematicaDiferencialNode(Node):
 
             return
 
+        # Calcula a idade do comando usando o timestamp da mensagem.        
         age_ns = now_ns - stamp_ns
 
         if stamp_ns == 0 or age_ns < -100000000 or age_ns > timeout * 1e9:
@@ -96,8 +103,9 @@ class CinematicaDiferencialNode(Node):
             return
 
 
-        left_speed = ( (v - (omega * separation)) / 2.0) / radius
-        right_speed = ( (v + (omega * separation)) / 2.0) / radius
+        # Calcula as velocidades angulares das rodas esquerda e direita.
+        left_speed = ( (v - (omega * separation / 2.0) ) ) / radius
+        right_speed = ( (v + (omega * separation / 2.0) ) ) / radius
 
         self.last_valid_command_ns = now_ns
         self.last_output_was_zero = False
@@ -118,6 +126,7 @@ class CinematicaDiferencialNode(Node):
         timeout = self.get_parameter('command_timeout').value
         now_ns = self.get_clock().now().nanoseconds
 
+        # Publica velocidades zero quando não há comando válido ou ele expirou.
         if (timeout <= 0.0 or self.last_valid_command_ns is None or now_ns - self.last_valid_command_ns > timeout * 1e9):
             
             if not self.last_output_was_zero:

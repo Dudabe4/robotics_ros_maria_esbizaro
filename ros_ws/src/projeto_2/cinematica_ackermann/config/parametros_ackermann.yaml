@@ -4,4 +4,4 @@
     wheel_base: 0.26            # distância entre eixos (m)
     wheel_separation: 0.20        # distância entre rodas esquerda e direita (m)
     max_steering_angle: 0.6     # esterçamento máximo (rad)
-    command_timeout: 0.5        # validade do comando (s)
+    command_timeout: 1.5        # validade do comando (s)
