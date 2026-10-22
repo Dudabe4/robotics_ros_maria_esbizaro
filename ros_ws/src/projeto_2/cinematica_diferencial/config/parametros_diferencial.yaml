@@ -1,0 +1,5 @@
+/cinematica_diferencial:
+  ros__parameters:
+    wheel_radius: 0.10          # raio das rodas (m)
+    wheel_separation: 0.40      # distância entre rodas esquerda e direita (m)
+    command_timeout: 1.5        # validade do comando (s)
